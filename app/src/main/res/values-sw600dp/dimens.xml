@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">32dp</dimen>
+    <dimen name="hud_margin_start">32dp</dimen>
+    <dimen name="hud_margin_top">16dp</dimen>
+    <dimen name="title1_text_size">36sp</dimen>
+    <dimen name="title2_text_size">28sp</dimen>
+    <dimen name="small_text_size">16sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="very_small_text_size">14sp</dimen>
+    <dimen name="button_width">280dp</dimen>
+    <dimen name="button_height">72dp</dimen>
+    <dimen name="button_text_size">22sp</dimen>
+    <dimen name="horizontal_margin">40dp</dimen>
+    <dimen name="bottom_margin">32dp</dimen>
+    <dimen name="title_margin_top">40dp</dimen>
+    <dimen name="cache_padding">12dp</dimen>
+    <dimen name="icon_button_size">72dp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="margin_small">20dp</dimen>
+    <dimen name="margin_medium">32dp</dimen>
+</resources>

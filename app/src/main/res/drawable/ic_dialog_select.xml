@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:height="36dp"
+    android:width="1017dp"
+    android:viewportWidth="1017"
+    android:viewportHeight="36">
+    <path
+        android:fillColor="@drawable/helper_ic_dialog_select__0"
+        android:pathData="M-1,0h1018v36h-1018z"/>
+</vector>

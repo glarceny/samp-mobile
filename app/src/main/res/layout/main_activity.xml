@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:padding="@dimen/margin_medium">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/client_name"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/title1_text_size"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/title_margin_top"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/samp_ver"
+        android:textColor="#808080"
+        android:textSize="@dimen/title2_text_size"
+        android:textStyle="bold"
+        android:layout_below="@id/title1"
+        android:layout_alignStart="@id/title1"
+        android:layout_marginTop="8dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"/>
+
+    <TextView
+        android:id="@+id/authorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authors"
+        android:textColor="#87CEEB"
+        android:textSize="@dimen/small_text_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/bottom_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"/>
+
+    <TextView
+        android:id="@+id/bugText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bug_info"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/medium_text_size"
+        android:layout_above="@id/authorText"
+        android:layout_alignStart="@id/authorText"
+        android:layout_marginBottom="8dp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"/>
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:text="@string/play_bth"
+        android:textSize="@dimen/button_text_size"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/bottom_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:elevation="8dp"/>
+
+</RelativeLayout>
