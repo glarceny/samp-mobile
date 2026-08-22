@@ -12,8 +12,8 @@ android {
         applicationId = "com.gta.game"
         minSdk = 28
         targetSdk = 36
-        versionCode = 3
-        versionName = "0.9.1-stenly"
+        versionCode = 4
+        versionName = "0.9.2-stenly"
 
         multiDexEnabled = true
 

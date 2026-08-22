@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sheet"
+    android:paddingStart="22dp"
+    android:paddingEnd="22dp"
+    android:paddingTop="14dp"
+    android:paddingBottom="26dp">
+
+    <View
+        android:layout_width="44dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_input"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:id="@+id/tvSheetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tvSheetHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#5B9BD5"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tvSheetInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#8A93A6"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp"/>
+
+    <EditText
+        android:id="@+id/inNick"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_input"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:hint="Nama_Player"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#6B7280"
+        android:singleLine="true"
+        android:inputType="text"
+        android:textSize="15sp"/>
+
+    <EditText
+        android:id="@+id/inPass"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:hint="Password server (opsional)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#6B7280"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:text="MAIN"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2E7D5B"/>
+
+    <TextView
+        android:id="@+id/tvDataNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#E57373"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pemain online:"
+        android:textColor="#8A93A6"
+        android:textSize="12sp"
+        android:layout_marginTop="14dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="6dp">
+
+        <LinearLayout
+            android:id="@+id/playerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
+</LinearLayout>
