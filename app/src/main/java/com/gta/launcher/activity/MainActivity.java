@@ -29,8 +29,8 @@ import com.gta.game.SAMP;
 
 public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler(Looper.getMainLooper());
-    private Button startButton;
-    private TextView title1, title2, authorText, cacheText;
+    private Button startButton, btnServers, btnSettings;
+    private TextView title1, title2, authorText, cacheText, dataStatus;
     private boolean storagePermissionGranted = false;
 
     private final ActivityResultLauncher<String[]> requestStoragePermissionLauncher =
@@ -219,10 +219,47 @@ public class MainActivity extends AppCompatActivity {
             title2 = findViewById(R.id.title2);
             authorText = findViewById(R.id.authorText);
             startButton = findViewById(R.id.startButton);
+            dataStatus = findViewById(R.id.dataStatus);
+            btnServers = findViewById(R.id.btnServers);
+            btnSettings = findViewById(R.id.btnSettings);
+            updateDataStatus();
 
         } catch (Exception e) {
             Log.e("MainActivity", "Error in initViews: " + e.getMessage());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (dataStatus != null) updateDataStatus();
+    }
+
+    private void updateDataStatus() {
+        boolean ok = com.gta.launcher.util.GameDataUtil.isDataReady();
+        dataStatus.setText(ok
+                ? "✔ Data game terpasang — siap bermain"
+                : "✖ Data game belum ada (extract cache-repack.zip ke penyimpanan internal)");
+        dataStatus.setTextColor(android.graphics.Color.parseColor(ok ? "#81C784" : "#E57373"));
+    }
+
+    private void openServerList() {
+        startActivity(new android.content.Intent(this, ServerListActivity.class));
+    }
+
+    private void showNoDataDialog() {
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Data game belum ada")
+                .setMessage("Download cache-repack.zip lalu extract ke penyimpanan internal (/storage/emulated/0/).\n\nTetap bisa lihat daftar server tanpa data, tapi tidak bisa bermain.")
+                .setPositiveButton("Buka Link Download", (d, w) -> {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(com.gta.launcher.util.GameDataUtil.CACHE_URL)));
+                    } catch (Exception ignored) {}
+                })
+                .setNeutralButton("Lewati", (d, w) -> openServerList())
+                .setNegativeButton("Tutup", null)
+                .show();
     }
 
     private void startGame() {
@@ -250,29 +287,28 @@ public class MainActivity extends AppCompatActivity {
                                 })
                                 .start();
 
-                        if (storagePermissionGranted) {
-                            startGame();
-                        } else {
+                        if (!storagePermissionGranted) {
                             checkAndRequestStoragePermission();
+                            return;
                         }
+                        if (!com.gta.launcher.util.GameDataUtil.isDataReady()) {
+                            showNoDataDialog();
+                            return;
+                        }
+                        openServerList();
                     } catch (Exception e) {
                         Log.e("MainActivity", "Error in start button click: " + e.getMessage());
                     }
                 }
             });
 
-            authorText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                                Uri.parse("https://t.me/kuzia15"));
-                        startActivity(browserIntent);
-                    } catch (Exception e) {
-                        Log.e("MainActivity", "Error opening tg: " + e.getMessage());
-                    }
-                }
+            btnServers.setOnClickListener(v -> {
+                if (!storagePermissionGranted) { checkAndRequestStoragePermission(); return; }
+                openServerList();
             });
+
+            btnSettings.setOnClickListener(v -> startActivity(
+                    new android.content.Intent(this, SettingsActivity.class)));
 
         } catch (Exception e) {
             Log.e("MainActivity", "Error setting up click listeners: " + e.getMessage());

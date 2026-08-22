@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">GTA 2.11</string>
-    <string name="play_bth">START!</string>
-    <string name="samp_ver">SA:MP 0.3.7</string>
-    <string name="client_name">SA:MP 2.11 </string>
-    <string name="bug_info">Found a bug? Report it, and I\'ll fix it!</string>
-    <string name="authors">thanks to bkuzn and afobazl</string>
+    <string name="app_name">Stenly Client</string>
+    <string name="play_bth">MULAI</string>
+    <string name="samp_ver">SA-MP 0.3.7 • Stenly Client</string>
+    <string name="client_name">STENLY CLIENT</string>
+    <string name="servers_btn">DAFTAR SERVER</string>
+    <string name="settings_btn">PENGATURAN</string>
+    <string name="bug_info">Stenly Client • data game wajib terpasang untuk bermain</string>
+    <string name="authors">based on SA-MP Mobile 2.11 (open source)</string>
     <string name="downloaderAssetsHeader">Preparing assets:</string>
     <string name="downloaderError">Error</string>
     <string name="downloaderNoData">Game Data was either not installed or was deleted. Please connect to the internet and relaunch so it can download!</string>
