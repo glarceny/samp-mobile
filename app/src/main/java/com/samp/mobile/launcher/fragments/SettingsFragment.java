@@ -199,6 +199,10 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 new SharedPreferenceCore().setBoolean(requireContext().getApplicationContext(), "MLOADER", b);
+                if(b) {
+                    com.samp.mobile.launcher.util.MonetLoaderSetup.ensureInstalled(requireContext().getApplicationContext());
+                    com.samp.mobile.launcher.util.MonetLoaderSetup.writeCompatProfile(requireContext().getApplicationContext());
+                }
             }
         });
 
