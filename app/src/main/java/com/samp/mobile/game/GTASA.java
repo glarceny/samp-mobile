@@ -19,23 +19,41 @@ public class GTASA extends WarMedia {
     static String vmVersion;
     private boolean once = false;
 
-    static {
-        ShadowHook.init(new ShadowHook.ConfigBuilder()
-                .setMode(ShadowHook.Mode.UNIQUE)
-                .build());
+    public static volatile String loadDiagnostics = null;
 
+    public static synchronized void recordDiag(String s) {
+        System.out.println("[DIAG] " + s);
+        loadDiagnostics = (loadDiagnostics == null ? "" : loadDiagnostics + "\n") + s;
+    }
+
+    private static void tryLoad(String name) {
+        try {
+            System.loadLibrary(name);
+            System.out.println("[DIAG] " + name + " OK");
+        } catch (Throwable t) {
+            recordDiag(name + " FAILED: " + t.getClass().getName() + ": " + t.getMessage());
+        }
+    }
+
+    static {
         vmVersion = null;
         System.out.println("**** Loading SO's");
         try {
             vmVersion = System.getProperty("java.vm.version");
             System.out.println("vmVersion " + vmVersion);
-            System.loadLibrary("ImmEmulatorJ");
+        } catch (Throwable ignored) {
         }
-        catch (ExceptionInInitializerError | UnsatisfiedLinkError ignored) {
+        try {
+            ShadowHook.init(new ShadowHook.ConfigBuilder()
+                    .setMode(ShadowHook.Mode.UNIQUE)
+                    .build());
+        } catch (Throwable t) {
+            recordDiag("shadowhook FAILED: " + t.getClass().getName() + ": " + t.getMessage());
         }
-        System.loadLibrary("GTASA");
-        System.loadLibrary("bass");
-        System.loadLibrary("samp");
+        tryLoad("ImmEmulatorJ");
+        tryLoad("GTASA");
+        tryLoad("bass");
+        tryLoad("samp");
     }
 
     public static void staticEnterSocialClub()

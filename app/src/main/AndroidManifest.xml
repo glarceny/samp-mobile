@@ -41,6 +41,7 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
+        android:name="com.samp.mobile.CrashApp"
         android:gwpAsanMode="always"
         android:requestLegacyExternalStorage="true"
         android:banner="@mipmap/ic_launcher"
@@ -66,18 +67,14 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity
-            android:name="com.samp.mobile.game.SAMP"
-            android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+    <activity
+        android:name="com.samp.mobile.game.SAMP"
+        android:screenOrientation="landscape"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+        android:launchMode="singleTask"
+        android:windowSoftInputMode="adjustPan"
+        android:exported="false">
     </activity>
 
     <activity
@@ -92,12 +89,30 @@
         android:screenOrientation="portrait"
         android:exported="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
     </activity>
 
     <activity
         android:name=".launcher.UpdateActivity"
         android:screenOrientation="portrait"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    </activity>
+
+    <activity
+        android:name=".launcher.ErrorActivity"
+        android:exported="false"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+    </activity>
+
+    <activity
+        android:name=".launcher.ErrorActivity"
+        android:exported="false"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
     </activity>
 
     <service android:name=".launcher.UpdateService" android:enabled="true" android:exported="false"/>

@@ -58,7 +58,7 @@ public class FirebaseMessageReceiver extends FirebaseMessagingService {
         String channel_id="web_app_channel";
         intent.putExtra("notif_message", message );
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
 
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),channel_id)
@@ -89,7 +89,7 @@ public class FirebaseMessageReceiver extends FirebaseMessagingService {
         Intent intent=new Intent(this, SplashActivity.class);
         String channel_id="web_app_channel";
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),channel_id)
                 .setSmallIcon(R.mipmap.ic_launcher)
