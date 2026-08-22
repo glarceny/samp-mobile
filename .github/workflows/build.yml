@@ -1,0 +1,45 @@
+name: Build SAMP Mobile APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install NDK and CMake
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "ndk;26.2.11394342" "cmake;3.22.1" > /dev/null
+
+      - name: Generate signing keystore
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/../keys"
+          keytool -genkeypair -v \
+            -keystore "$GITHUB_WORKSPACE/../keys/new.jks" \
+            -alias key0 -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass 123123 -keypass 123123 \
+            -dname "CN=SAMP Mobile, OU=Dev, O=Dev, C=ID"
+
+      - name: Build APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: samp-mobile-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
